@@ -15,9 +15,35 @@ Archive:  bin/goport-0.0.1.zip
         0  11-30-2016 14:50   goport-0.0.1/darwin/
         0  11-30-2016 15:45   goport-0.0.1/darwin/amd64/
   2648144  11-30-2016 15:45   goport-0.0.1/darwin/amd64/goport
+...
+  2795520  11-30-2016 15:51   goport-0.0.1/windows/amd64/goport.exe
+---------                     -------
+ 79477875                     73 files
 ```
 
-# Optional
+See [mcandre/go-ios7crypt](https://github.com/mcandre/go-ios7crypt/blob/master/Makefile#L32) for more examples.
+
+# ABOUT
+
+`goport` is a light wrapper around `go build`, an amazing cross-compiler! While developers can manually port applications with individual `env GOOS=... GOARCH=... go build ...` commands, `goport` abstracts certain platform-dependent details:
+
+* Target all supported platforms, from `windows/386` to `darwin/amd64`
+* Support multiple `cmd/*` scripts
+* Accept host-specific source paths like `~` and `C:\\`
+* Respect platform-specific binary naming conventions like `*.exe`
+* Organize ports in a simple directory tree (`<banner>/<os>/<arch>/<app>[.suffix]>`)
+* Package binaries in a single `.zip` file for easy HTTP hosting
+
+# DOWNLOAD
+
+https://github.com/mcandre/goport/releases
+
+# REQUIREMENTS
+
+* [Go](https://golang.org) 1.7+ with [$GOPATH configured](https://gist.github.com/mcandre/ef73fb77a825bd153b7836ddbd9a6ddc)
+* [zip](https://linux.die.net/man/1/zip)
+
+## Optional
 
 * [Git](https://git-scm.com)
 * [Make](https://www.gnu.org/software/make/)
