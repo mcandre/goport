@@ -27,6 +27,7 @@ More examples:
 * [go-ios7crypt](https://github.com/mcandre/go-ios7crypt)
 * [go-chop](https://github.com/mcandre/go-chop)
 * [go-hextime](https://github.com/mcandre/go-hextime)
+* [go-rotate](https://github.com/mcandre/go-rotate)
 
 # ABOUT
 
