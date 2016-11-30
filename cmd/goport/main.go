@@ -15,10 +15,10 @@ const Usage = `Usage:
   goport -v | --version
 
   Options:
-    -a --application <name>  Specify an application name
-    -l --label <name>        Specify a label, such as a version number
-    -b --binaries <dir>      Specify a binary target directory
-    -c --commands <dir>      Specify a command source directory
+    -a --application <name>  Specify an application name [default: $(pwd)]
+		-l --label <name>        Specify a label, such as a version number [default: nil]
+		-b --binaries <dir>      Specify a binary target directory [default: bin]
+		-c --commands <dir>      Specify a command source directory [default: cmd]
     -h --help                Show usage information
     -v --version             Show version information`
 
@@ -29,9 +29,9 @@ func main() {
 		panic(Usage)
 	}
 
-	application, applicationStatus := arguments["--application"].(string)
+	application, _ := arguments["--application"].(string)
 
-	if !applicationStatus {
+	if application == "$(pwd)" {
 		cwd, err := os.Getwd()
 
 		if err != nil {
@@ -43,14 +43,11 @@ func main() {
 
 	log.Printf("application: %v\n", application)
 
-	label, labelStatus := arguments["--label"].(string)
+	label, _ := arguments["--label"].(string)
 
 	log.Printf("label: %v\n", label)
-	log.Printf("labelStatus: %v\n", labelStatus)
 
-	if !labelStatus {
-		label = ""
-	}
+	binariesDirectory, _ := arguments["--binaries"].(string)
 
-	log.Printf("label: %v\n", label)
+	log.Printf("binariesDirectory: %v\n", binariesDirectory)
 }
