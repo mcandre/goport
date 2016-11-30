@@ -7,7 +7,7 @@ all: integration-self-test
 integration-self-test: port
 
 port:
-	goport goport $(VERSION) bin cmd
+	goport -a goport -l $(VERSION) -b bin -c cmd
 
 govet:
 	go list ./... | grep -v vendor | xargs go vet -v

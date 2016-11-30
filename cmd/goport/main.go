@@ -7,16 +7,15 @@ import (
 )
 
 const Usage = `Usage:
-  goport [options]
-  goport -v | --version
-  goport -h | --help
+  goport [-alvh]
 
-	Options:
-    -o --output <file>     Specify an output path
-		-b --binaries <dir>      Specify a binary target directory
-		-c --commands <dir>      Specify a command source directory
-    -h --help     Show usage information
-    -v --version  Show version information`
+  Options:
+    -a --application <name>  Specify an application name
+    -l --label <name>        Specify a label, such as a version number
+    -b --binaries <dir>      Specify a binary target directory
+    -c --commands <dir>      Specify a command source directory
+    -h --help                Show usage information
+    -v --version             Show version information`
 
 func main() {
 	arguments, err := docopt.Parse(Usage, nil, true, goport.Version, false)
