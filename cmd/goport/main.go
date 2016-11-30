@@ -1,14 +1,16 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"os"
+	"path"
 
 	"github.com/docopt/docopt-go"
 	"github.com/mcandre/goport"
 )
 
 const Usage = `Usage:
-  goport [-a | --application <name>] [-l | --label <name>] [-b --binaries <dir>] [-c --comands <dir>]
+  goport [options]
   goport -h | --help
   goport -v | --version
 
@@ -24,8 +26,31 @@ func main() {
 	arguments, err := docopt.Parse(Usage, nil, true, goport.Version, false)
 
 	if err != nil {
-		fmt.Println(Usage)
+		panic(Usage)
 	}
 
-	fmt.Printf("Arguments: %v\n", arguments)
+	application, applicationStatus := arguments["--application"].(string)
+
+	if !applicationStatus {
+		cwd, err := os.Getwd()
+
+		if err != nil {
+			panic(err)
+		}
+
+		application = path.Base(cwd)
+	}
+
+	log.Printf("application: %v\n", application)
+
+	label, labelStatus := arguments["--label"].(string)
+
+	log.Printf("label: %v\n", label)
+	log.Printf("labelStatus: %v\n", labelStatus)
+
+	if !labelStatus {
+		label = ""
+	}
+
+	log.Printf("label: %v\n", label)
 }
