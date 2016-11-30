@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# pre-commit
+#
+# Lint on commit
+#
+# Install:
+#
+# ln -s ../../hooks/pre-commit .git/hooks/pre-commit
+#
+# Uninstall:
+#
+# rm .git/hooks/pre-commit
+
+make lint
