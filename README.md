@@ -29,6 +29,7 @@ More examples:
 * [go-hextime](https://github.com/mcandre/go-hextime)
 * [go-rotate](https://github.com/mcandre/go-rotate)
 * [go-swatch](https://github.com/mcandre/go-swatch)
+* [karp](https://github.com/mcandre/karp)
 
 # ABOUT
 
