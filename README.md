@@ -11,12 +11,20 @@ $ unzip -l bin/goport-0.0.1.zip
 Archive:  bin/goport-0.0.1.zip
   Length      Date    Time    Name
 ---------  ---------- -----   ----
-        0  11-30-2016 15:38   goport-0.0.1/
-        0  11-30-2016 14:50   goport-0.0.1/darwin/
-        0  11-30-2016 15:45   goport-0.0.1/darwin/amd64/
   2648144  11-30-2016 15:45   goport-0.0.1/darwin/amd64/goport
-...
+  2284208  11-30-2016 15:45   goport-0.0.1/darwin/386/goport
+  2315114  11-30-2016 15:45   goport-0.0.1/linux/386/goport
+  2699164  11-30-2016 15:45   goport-0.0.1/linux/amd64/goport
+  2376185  11-30-2016 15:45   goport-0.0.1/linux/arm/goport
+  2934726  11-30-2016 15:45   goport-0.0.1/linux/arm64/goport
+  3200543  11-30-2016 15:45   goport-0.0.1/linux/mips64/goport
+  3200679  11-30-2016 15:46   goport-0.0.1/linux/mips64le/goport
+  3002876  11-30-2016 15:46   goport-0.0.1/linux/ppc64/goport
+  3002851  11-30-2016 15:46   goport-0.0.1/linux/ppc64le/goport
+  3003563  11-30-2016 15:46   goport-0.0.1/linux/s390x/goport
+  2420736  11-30-2016 15:51   goport-0.0.1/windows/386/goport.exe
   2795520  11-30-2016 15:51   goport-0.0.1/windows/amd64/goport.exe
+...
 ---------                     -------
  79477875                     73 files
 ```
