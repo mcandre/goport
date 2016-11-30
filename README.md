@@ -57,7 +57,7 @@ $ sh -c 'cd cmd/goport && go install'
 $ make integration-test
 ```
 
-# BUILD AND ARCHIVE PORTS
+# PORT
 
 ```
 $ make port
