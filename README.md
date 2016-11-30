@@ -4,13 +4,8 @@
 
 ```
 $ goport -l 0.0.1
-...
-Archiving ports to bin/goport-0.0.1.zip
 
 $ unzip -l bin/goport-0.0.1.zip
-Archive:  bin/goport-0.0.1.zip
-  Length      Date    Time    Name
----------  ---------- -----   ----
   2648144  11-30-2016 15:45   goport-0.0.1/darwin/amd64/goport
   2284208  11-30-2016 15:45   goport-0.0.1/darwin/386/goport
   2315114  11-30-2016 15:45   goport-0.0.1/linux/386/goport
@@ -25,8 +20,6 @@ Archive:  bin/goport-0.0.1.zip
   2420736  11-30-2016 15:51   goport-0.0.1/windows/386/goport.exe
   2795520  11-30-2016 15:51   goport-0.0.1/windows/amd64/goport.exe
 ...
----------                     -------
- 79477875                     73 files
 ```
 
 See [mcandre/go-ios7crypt](https://github.com/mcandre/go-ios7crypt/blob/master/Makefile#L32) for more examples.
