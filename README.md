@@ -15,7 +15,9 @@ Archive:  bin/goport-0.0.1.zip
         0  11-30-2016 14:50   goport-0.0.1/darwin/
         0  11-30-2016 15:45   goport-0.0.1/darwin/amd64/
   2648144  11-30-2016 15:45   goport-0.0.1/darwin/amd64/goport
-Optional
+```
+
+# Optional
 
 * [Git](https://git-scm.com)
 * [Make](https://www.gnu.org/software/make/)
