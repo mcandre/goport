@@ -22,7 +22,7 @@ $ unzip -l bin/goport-0.0.1.zip
 ...
 ```
 
-See [mcandre/go-ios7crypt](https://github.com/mcandre/go-ios7crypt/blob/master/Makefile#L32) for more examples.
+For more examples of using goports to port your projects, see [go-ios7crypt](https://github.com/mcandre/go-iosycrypt), [go-chop](https://github.com/mcandre/go-chop).
 
 # ABOUT
 
