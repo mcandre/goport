@@ -8,6 +8,8 @@ $ goport -l 0.0.1
 Archiving ports to bin/goport-0.0.1.zip
 ```
 
+See [mcandre/go-ios7crypt](https://github.com/mcandre/go-ios7crypt/blob/master/Makefile#L32) for more examples.
+
 # ABOUT
 
 `goport` is a light wrapper around `go build`, an amazing cross-compiler! While developers can manually port applications with individual `env GOOS=... GOARCH=... go build ...` commands, `goport` abstracts certain platform-dependent details:
