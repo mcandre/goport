@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/docopt/docopt-go"
 	"github.com/mcandre/goport"
 )
 
 const Usage = `Usage:
-  goport [-alvh]
+  goport [-a | --application <name>] [-l | --label <name>] [-b --binaries <dir>] [-c --comands <dir>]
+  goport -h | --help
+  goport -v | --version
 
   Options:
     -a --application <name>  Specify an application name
@@ -25,6 +28,4 @@ func main() {
 	}
 
 	fmt.Printf("Arguments: %v\n", arguments)
-
-	// ...
 }
