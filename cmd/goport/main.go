@@ -8,7 +8,6 @@ import (
 	"os/exec"
 	"path"
 	"regexp"
-	// "sync"
 
 	"github.com/docopt/docopt-go"
 	"github.com/jhoonb/archivex"
@@ -30,8 +29,20 @@ const Usage = `Usage:
 
 const Perms = 0744
 
-func build(/*waitGroup sync.WaitGroup, */banner string, binRoot string, cmdRoot string, script string, target string) {
-	// defer waitGroup.Done()
+type BuildConfig struct {
+	Banner string
+	BinRoot string
+	CmdRoot string
+	Script string
+	Target string
+}
+
+func build(buildConfig BuildConfig) {
+	banner := buildConfig.Banner
+	binRoot := buildConfig.BinRoot
+	cmdRoot := buildConfig.CmdRoot
+	script := buildConfig.Script
+	target := buildConfig.Target
 
 	osArchPattern := regexp.MustCompile("(.+)/(.+)")
 
@@ -171,19 +182,19 @@ func main() {
 		}
 	}
 
-	// var waitGroup sync.WaitGroup
-
 	for _, script := range scripts {
 		for _, target := range targets {
-			// waitGroup.Add(1)
-			/*go*/ build(/*waitGroup, */banner, binRoot, cmdRoot, script, target)
+			build(BuildConfig{
+				Banner: banner,
+				BinRoot: binRoot,
+				CmdRoot: cmdRoot,
+				Script: script,
+				Target: target,
+			})
 		}
 	}
 
-	// waitGroup.Wait()
-
 	bannerDir := path.Join(binRoot, banner)
-
 	archivePath := path.Join(binRoot, banner+".zip")
 
 	log.Printf("Archiving ports to %s\n", archivePath)
