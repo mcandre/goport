@@ -49,11 +49,11 @@ https://github.com/mcandre/goport/releases
 # REQUIREMENTS
 
 * [Go](https://golang.org) 1.7+ with [$GOPATH configured](https://gist.github.com/mcandre/ef73fb77a825bd153b7836ddbd9a6ddc)
-* [zip](https://linux.die.net/man/1/zip)
 
 ## Optional
 
 * [Git](https://git-scm.com)
+* [zip](https://linux.die.net/man/1/zip)
 * [Make](https://www.gnu.org/software/make/)
 * [Bash](https://www.gnu.org/software/bash/)
 * [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports) (e.g. `go get golang.org/x/tools/cmd/goimports`)
@@ -99,3 +99,7 @@ $ make lint
 # GIT HOOKS
 
 See `hooks/`.
+
+# CREDITS
+
+Shout out to [jhoonb/archivex](https://github.com/jhoonb/archivex) for simplifying recursive archiving!

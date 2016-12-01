@@ -1,3 +1,6 @@
 [submodule "vendor/github.com/docopt/docopt-go"]
 	path = vendor/github.com/docopt/docopt-go
 	url = https://github.com/docopt/docopt-go
+[submodule "vendor/github.com/jhoonb/archivex"]
+	path = vendor/github.com/jhoonb/archivex
+	url = git@github.com:jhoonb/archivex.git

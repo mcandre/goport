@@ -8,8 +8,10 @@ import (
 	"os/exec"
 	"path"
 	"regexp"
+	// "sync"
 
 	"github.com/docopt/docopt-go"
+	"github.com/jhoonb/archivex"
 	"github.com/mcandre/goport"
 )
 
@@ -28,7 +30,9 @@ const Usage = `Usage:
 
 const Perms = 0744
 
-func build(banner string, binRoot string, cmdRoot string, script string, target string) {
+func build(/*waitGroup sync.WaitGroup, */banner string, binRoot string, cmdRoot string, script string, target string) {
+	// defer waitGroup.Done()
+
 	osArchPattern := regexp.MustCompile("(.+)/(.+)")
 
 	results := osArchPattern.FindStringSubmatch(target)
@@ -72,28 +76,6 @@ func build(banner string, binRoot string, cmdRoot string, script string, target 
 	command.Env = env
 
 	err = command.Run()
-
-	if err != nil {
-		panic(err)
-	}
-}
-
-func archive(binRoot string, banner string, junkfiles []string) {
-	artifact := banner+".zip"
-
-	var args []string
-	args = append(args, "-r", artifact, banner)
-
-	for _, j := range junkfiles {
-		args = append(args, fmt.Sprintf("-x '*%s'", j))
-	}
-
-	command := exec.Command("zip", args...)
-	command.Dir = binRoot
-
-	log.Printf("Archiving ports to %s\n", path.Join(binRoot, artifact))
-
-	err := command.Run()
 
 	if err != nil {
 		panic(err)
@@ -189,13 +171,26 @@ func main() {
 		}
 	}
 
+	// var waitGroup sync.WaitGroup
+
 	for _, script := range scripts {
 		for _, target := range targets {
-			build(banner, binRoot, cmdRoot, script, target)
+			// waitGroup.Add(1)
+			/*go*/ build(/*waitGroup, */banner, binRoot, cmdRoot, script, target)
 		}
 	}
 
-	junkfiles := []string{"Thumbs.db",".DS_Store"}
+	// waitGroup.Wait()
 
-	archive(binRoot, banner, junkfiles)
+	bannerDir := path.Join(binRoot, banner)
+
+	archivePath := path.Join(binRoot, banner+".zip")
+
+	log.Printf("Archiving ports to %s\n", archivePath)
+
+	archive := new(archivex.ZipFile)
+	defer archive.Close()
+
+	archive.Create(archivePath)
+	archive.AddAll(bannerDir, true)
 }
