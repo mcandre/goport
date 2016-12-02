@@ -106,5 +106,5 @@ Shout out to [jhoonb/archivex](https://github.com/jhoonb/archivex) for simplifyi
 
 # ALTERNATIVES
 
-* [gox](https://github.com/mitchellh/gox)
+* [gox](https://github.com/mitchellh/gox) + [zipc](https://github.com/mcandre/zipc)
 * [goport.sh](https://gist.github.com/mcandre/287a09b12f20d2781aa0875cb97c79fb)
