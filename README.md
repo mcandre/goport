@@ -24,12 +24,12 @@ $ unzip -l bin/goport-0.0.1.zip
 
 More examples:
 
-* [go-ios7crypt](https://github.com/mcandre/go-ios7crypt)
-* [go-chop](https://github.com/mcandre/go-chop)
-* [go-hextime](https://github.com/mcandre/go-hextime)
-* [go-rotate](https://github.com/mcandre/go-rotate)
-* [go-swatch](https://github.com/mcandre/go-swatch)
-* [karp](https://github.com/mcandre/karp)
+* [go-ios7crypt](https://github.com/mcandre/go-ios7crypt/tree/117ec78f571cbe3bb42313f6a9dd3f77a4aaa322)
+* [go-chop](https://github.com/mcandre/go-chop/tree/579da02592cd3d95fd1b56692c9187fb919bac79)
+* [go-hextime](https://github.com/mcandre/go-hextime/tree/48df8ab973694e15c2c87ee7b5e521af4f9174bf)
+* [go-rotate](https://github.com/mcandre/go-rotate/tree/3bbf4d965631d3fd9606bdf9363e9c6476ac1423)
+* [go-swatch](https://github.com/mcandre/go-swatch/commit/1f044fef9fb375e1b20a9d414289e686e70948f8)
+* [karp](https://github.com/mcandre/karp/tree/e3713a5ed06f20d78f94e0362f391b0453e13241)
 
 # ABOUT
 
