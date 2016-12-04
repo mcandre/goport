@@ -9,3 +9,4 @@
 source_up
 source "$HOME/.bashrc.d/direnv/gvm.sh"
 source "$HOME/.bashrc.d/direnv/chruby.sh"
+source "$HOME/.bashrc.d/direnv/pyenv.sh"
