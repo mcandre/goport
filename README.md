@@ -1,3 +1,7 @@
+# DEPRECATED
+
+In favor of the awesome [mitchellh/gox](https://github.com/mitchellh/gox)!
+
 # goport - build bots ♥ me
 
 # EXAMPLE
