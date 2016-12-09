@@ -49,7 +49,7 @@ func build(buildConfig BuildConfig) {
 	results := osArchPattern.FindStringSubmatch(target)
 
 	if len(results) != 3 {
-		panic(fmt.Sprintf("Error parsing target %s\n", target))
+		log.Panic(fmt.Sprintf("Error parsing target %s\n", target))
 	}
 
 	oSys, arch := results[1], results[2]
@@ -67,7 +67,7 @@ func build(buildConfig BuildConfig) {
 	err := os.MkdirAll(branch, Perms)
 
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 
 	cmdDir := path.Join(cmdRoot, script)
@@ -89,16 +89,12 @@ func build(buildConfig BuildConfig) {
 	err = command.Run()
 
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 }
 
 func main() {
-	arguments, err := docopt.Parse(Usage, nil, true, goport.Version, false)
-
-	if err != nil {
-		panic(Usage)
-	}
+	arguments, _ := docopt.Parse(Usage, nil, true, goport.Version, false)
 
 	app, _ := arguments["--application"].(string)
 
@@ -106,7 +102,7 @@ func main() {
 		cwd, err := os.Getwd()
 
 		if err != nil {
-			panic(err)
+			log.Panic(err)
 		}
 
 		app = path.Base(cwd)
@@ -127,7 +123,7 @@ func main() {
 	targetBytes, err := exec.Command("go", "tool", "dist", "list").Output()
 
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 
 	targetLines := string(targetBytes)
@@ -157,7 +153,7 @@ func main() {
 	scriptEntriesWithBin, err := ioutil.ReadDir(cmdRoot)
 
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 
 	var scriptsWithJunkFiles []string
