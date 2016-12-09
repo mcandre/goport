@@ -49,7 +49,7 @@ func build(buildConfig BuildConfig) {
 	results := osArchPattern.FindStringSubmatch(target)
 
 	if len(results) != 3 {
-		log.Panic(fmt.Sprintf("Error parsing target %s\n", target))
+		log.Panic("Error parsing target", target)
 	}
 
 	oSys, arch := results[1], results[2]
@@ -78,7 +78,7 @@ func build(buildConfig BuildConfig) {
 
 	leaf := path.Join(branch, executableBase)
 
-	log.Printf("Building %s\n", leaf)
+	log.Println("Building", leaf)
 
 	outputPath := path.Join("..", "..", leaf)
 
@@ -193,7 +193,7 @@ func main() {
 	bannerDir := path.Join(binRoot, banner)
 	archivePath := path.Join(binRoot, banner+".zip")
 
-	log.Printf("Archiving ports to %s\n", archivePath)
+	log.Print("Archiving ports to", archivePath)
 
 	archive := new(archivex.ZipFile)
 	defer archive.Close()
