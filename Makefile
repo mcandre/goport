@@ -12,6 +12,9 @@ port:
 govet:
 	go list ./... | grep -v vendor | xargs go vet -v
 
+golint:
+	find . -path '*/vendor/*' -prune -o -name '*.go' -type f -exec golint {} \;
+
 gofmt:
 	find . -path '*/vendor/*' -prune -o -name '*.go' -type f -exec gofmt -s -w {} \;
 
@@ -33,7 +36,7 @@ shellcheck:
 editorconfig:
 	sh editorconfig.sh
 
-lint: govet gofmt goimport bashate shlint checkbashisms shellcheck editorconfig
+lint: govet golint gofmt goimport bashate shlint checkbashisms shellcheck editorconfig
 
 clean: clean-ports
 
