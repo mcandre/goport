@@ -30,11 +30,11 @@ const Usage = `Usage:
 const Perms = 0744
 
 type BuildConfig struct {
-	Banner string
+	Banner  string
 	BinRoot string
 	CmdRoot string
-	Script string
-	Target string
+	Script  string
+	Target  string
 }
 
 func build(buildConfig BuildConfig) {
@@ -181,11 +181,11 @@ func main() {
 	for _, script := range scripts {
 		for _, target := range targets {
 			build(BuildConfig{
-				Banner: banner,
+				Banner:  banner,
 				BinRoot: binRoot,
 				CmdRoot: cmdRoot,
-				Script: script,
-				Target: target,
+				Script:  script,
+				Target:  target,
 			})
 		}
 	}
@@ -196,8 +196,16 @@ func main() {
 	log.Print("Archiving ports to", archivePath)
 
 	archive := new(archivex.ZipFile)
-	defer archive.Close()
+	defer func() {
+		if err := archive.Close(); err != nil {
+			log.Panic(err)
+		}
+	}()
 
-	archive.Create(archivePath)
-	archive.AddAll(bannerDir, true)
+	if err := archive.Create(archivePath); err != nil {
+		log.Panic(err)
+	}
+	if err := archive.AddAll(bannerDir, true); err != nil {
+		log.Panic(err)
+	}
 }
