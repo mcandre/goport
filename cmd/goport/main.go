@@ -1,3 +1,4 @@
+// Package main provides a goport executable.
 package main
 
 import (
@@ -14,6 +15,7 @@ import (
 	"github.com/mcandre/goport"
 )
 
+// Usage is a docopt-formatted specification of this application's command line interface.
 const Usage = `Usage:
   goport [options]
   goport -h | --help
@@ -27,8 +29,10 @@ const Usage = `Usage:
     -h --help                Show usage information
     -v --version             Show version information`
 
+// Perms represents common Unix executable permissions.
 const Perms = 0744
 
+// BuildConfig presents customization points for gorport artifacts.
 type BuildConfig struct {
 	Banner  string
 	BinRoot string
@@ -37,6 +41,7 @@ type BuildConfig struct {
 	Target  string
 }
 
+// build generates cross-platform executables and archives them according to a given buildConfig.
 func build(buildConfig BuildConfig) {
 	banner := buildConfig.Banner
 	binRoot := buildConfig.BinRoot
@@ -93,6 +98,7 @@ func build(buildConfig BuildConfig) {
 	}
 }
 
+// main is the entrypoint for this application.
 func main() {
 	arguments, _ := docopt.Parse(Usage, nil, true, goport.Version, false)
 
