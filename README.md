@@ -91,7 +91,7 @@ $ sh -c 'cd cmd/goport && go install'
 # TEST
 
 ```
-$ make integration-test
+$ make integration-self-test
 ```
 
 # PORT
