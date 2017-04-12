@@ -22,7 +22,7 @@ goimport:
 	find . -path '*/vendor/*' -prune -o -name '*.go' -type f -exec goimports -w {} \;
 
 errcheck:
-	find . -path '*/vendor/*' -prune -o -name '*.go' -type f -exec errcheck {} \;
+	errcheck
 
 bashate:
 	find . \( -wholename '*/.git/*' -o -wholename '*/node_modules*' -o -name '*.bat' \) -prune -o -type f \( -wholename '*/lib/*' -o -wholename '*/hooks/*' -o -name '*.sh' -o -name '*.bashrc*' -o -name '.*profile*' -o -name '*.envrc*' \) -print | xargs bashate
