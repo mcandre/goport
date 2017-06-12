@@ -7,7 +7,7 @@ all: integration-self-test
 integration-self-test: port
 
 port:
-	goport -l $(VERSION)
+	goport -label $(VERSION)
 
 govet:
 	find . -path "*/vendor*" -prune -o -name "*.go" -type f -exec go tool vet -shadow {} \;

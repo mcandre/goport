@@ -7,7 +7,7 @@ In favor of the awesome [mitchellh/gox](https://github.com/mitchellh/gox)!
 # EXAMPLE
 
 ```
-$ goport -l 0.0.1
+$ goport -label 0.0.1
 
 $ unzip -l bin/goport-0.0.1.zip
   2648144  11-30-2016 15:45   goport-0.0.1/darwin/amd64/goport
@@ -24,6 +24,20 @@ $ unzip -l bin/goport-0.0.1.zip
   2420736  11-30-2016 15:51   goport-0.0.1/windows/386/goport.exe
   2795520  11-30-2016 15:51   goport-0.0.1/windows/amd64/goport.exe
 ...
+
+$ goport -help
+  -application string
+        Application name (default "$(pwd)")
+  -binaries string
+        Binary output directory (default "bin")
+  -commands string
+        Command source directory (default "cmd")
+  -help
+        Show usage information
+  -label string
+        For example, a version number
+  -version
+        Show version information
 ```
 
 More examples:

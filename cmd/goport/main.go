@@ -2,6 +2,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -10,24 +11,16 @@ import (
 	"path"
 	"regexp"
 
-	"github.com/docopt/docopt-go"
 	"github.com/jhoonb/archivex"
 	"github.com/mcandre/goport"
 )
 
-// Usage is a docopt-formatted specification of this application's command line interface.
-const Usage = `Usage:
-  goport [options]
-  goport -h | --help
-  goport -v | --version
-
-  Options:
-    -a --application <name>  Specify an application name [default: $(pwd)]
-    -l --label <name>        Specify a label, such as a version number
-    -b --binaries <dir>      Specify a binary target directory [default: bin]
-    -c --commands <dir>      Specify a command source directory [default: cmd]
-    -h --help                Show usage information
-    -v --version             Show version information`
+var flagApplication = flag.String("application", "$(pwd)", "Application name")
+var flagLabel = flag.String("label", "", "For example, a version number")
+var flagBinaries = flag.String("binaries", "bin", "Binary output directory")
+var flagCommands = flag.String("commands", "cmd", "Command source directory")
+var flagHelp = flag.Bool("help", false, "Show usage information")
+var flagVersion = flag.Bool("version", false, "Show version information")
 
 // Perms represents common Unix executable permissions.
 const Perms = 0744
@@ -100,31 +93,32 @@ func build(buildConfig BuildConfig) {
 
 // main is the entrypoint for this application.
 func main() {
-	arguments, _ := docopt.Parse(Usage, nil, true, goport.Version, false)
+	flag.Parse()
 
-	app, _ := arguments["--application"].(string)
+	switch {
+	case *flagHelp:
+		flag.PrintDefaults()
+		os.Exit(1)
+	case *flagVersion:
+		fmt.Println(goport.Version)
+		os.Exit(0)
+	}
 
-	if app == "$(pwd)" {
+	if *flagApplication == "$(pwd)" {
 		cwd, err := os.Getwd()
 
 		if err != nil {
 			log.Panic(err)
 		}
 
-		app = path.Base(cwd)
+		*flagApplication = path.Base(cwd)
 	}
 
-	label, _ := arguments["--label"].(string)
+	banner := *flagApplication
 
-	banner := app
-
-	if label != "" {
-		banner = fmt.Sprintf("%s-%s", app, label)
+	if *flagLabel != "" {
+		banner = fmt.Sprintf("%s-%s", *flagApplication, *flagLabel)
 	}
-
-	binRoot, _ := arguments["--binaries"].(string)
-
-	cmdRoot, _ := arguments["--commands"].(string)
 
 	targetBytes, err := exec.Command("go", "tool", "dist", "list").Output()
 
@@ -156,7 +150,7 @@ func main() {
 		}
 	}
 
-	scriptEntriesWithBin, err := ioutil.ReadDir(cmdRoot)
+	scriptEntriesWithBin, err := ioutil.ReadDir(*flagCommands)
 
 	if err != nil {
 		log.Panic(err)
@@ -164,7 +158,7 @@ func main() {
 
 	var scriptsWithJunkFiles []string
 
-	binBase := path.Base(binRoot)
+	binBase := path.Base(*flagBinaries)
 
 	for _, s := range scriptEntriesWithBin {
 		name := s.Name()
@@ -188,18 +182,18 @@ func main() {
 		for _, target := range targets {
 			build(BuildConfig{
 				Banner:  banner,
-				BinRoot: binRoot,
-				CmdRoot: cmdRoot,
+				BinRoot: *flagBinaries,
+				CmdRoot: *flagCommands,
 				Script:  script,
 				Target:  target,
 			})
 		}
 	}
 
-	bannerDir := path.Join(binRoot, banner)
-	archivePath := path.Join(binRoot, banner+".zip")
+	bannerDir := path.Join(*flagBinaries, banner)
+	archivePath := path.Join(*flagBinaries, banner+".zip")
 
-	log.Print("Archiving ports to", archivePath)
+	log.Print("Archiving ports to ", archivePath)
 
 	archive := new(archivex.ZipFile)
 	defer func() {
