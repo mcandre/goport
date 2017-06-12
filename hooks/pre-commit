@@ -6,7 +6,7 @@
 #
 # Install:
 #
-# ln -s ../../hooks/pre-commit .git/hooks/pre-commit
+# cp ../../hooks/pre-commit .git/hooks/pre-commit
 #
 # Uninstall:
 #
