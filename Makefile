@@ -37,7 +37,7 @@ shellcheck:
 	find . \( -wholename '*/.git/*' -o -wholename '*/node_modules*' -o -name '*.bat' \) -prune -o -type f \( -wholename '*/lib/*' -o -wholename '*/hooks/*' -o -name '*.sh' -o -name '*.bashrc*' -o -name '.*profile*' -o -name '*.envrc*' \) -print | xargs shellcheck
 
 editorconfig:
-	sh editorconfig.sh
+	flcl . | xargs -n 100 editorconfig-cli check
 
 lint: govet golint gofmt goimport errcheck bashate shlint checkbashisms shellcheck editorconfig
 
