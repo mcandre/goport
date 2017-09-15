@@ -97,7 +97,7 @@ $ go get github.com/mcandre/goport/...
 
 ```
 $ mkdir -p $GOPATH/src/github.com/mcandre
-$ git clone git@github.com:mcandre/goport.git $GOPATH/src/github.com/mcandre/goport
+$ git clone https://github.com/mcandre/goport.git $GOPATH/src/github.com/mcandre/goport
 $ cd $GOPATH/src/github.com/mcandre/goport
 $ git submodule update --init --recursive
 $ sh -c 'cd cmd/goport && go install'
