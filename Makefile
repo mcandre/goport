@@ -24,6 +24,9 @@ goimport:
 errcheck:
 	errcheck -blank
 
+nakedret:
+	nakedret -l 0 ./...
+
 bashate:
 	find . \( -wholename '*/.git/*' -o -wholename '*/node_modules*' -o -name '*.bat' \) -prune -o -type f \( -wholename '*/lib/*' -o -wholename '*/hooks/*' -o -name '*.sh' -o -name '*.bashrc*' -o -name '.*profile*' -o -name '*.envrc*' \) -print | xargs bashate
 
@@ -39,7 +42,7 @@ shellcheck:
 editorconfig:
 	flcl . | xargs -n 100 editorconfig-cli check
 
-lint: govet golint gofmt goimport errcheck bashate shlint checkbashisms shellcheck editorconfig
+lint: govet golint gofmt goimport errcheck nakedret bashate shlint checkbashisms shellcheck editorconfig
 
 clean: clean-ports
 
