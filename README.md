@@ -1,6 +1,6 @@
 # DEPRECATED
 
-In favor of the awesome [mitchellh/gox](https://github.com/mitchellh/gox)!
+In favor of [mcandre/goxcart](https://github.com/mcandre/goxcart)
 
 # goport - build bots ♥ me
 
